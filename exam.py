@@ -26,8 +26,7 @@ def sync_folders(source, replica):
         for filename in filenames:
             source_file = os.path.join(foldername, filename)
             replica_file = os.path.join(replica_foldername, filename)
-
-            # Se o arquivo não existir ou for diferente, copie-o
+            
             if not os.path.exists(replica_file) or calculate_md5(source_file) != calculate_md5(replica_file):
                 shutil.copy2(source_file, replica_file)
                 logging.info(f'File coppied {source_file} -> {replica_file}')
